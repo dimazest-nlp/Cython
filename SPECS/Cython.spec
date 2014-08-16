@@ -1,10 +1,10 @@
 
-%{?scl:%scl_package python-numexpr}
+%{?scl:%scl_package Cython}
 %{!?scl:%global pkg_name %{name}}
 
-Name:		Cython
+Name:		%{?scl_prefix}Cython
 Version:	0.20.2
-Release:	5%{?dist}
+Release:	1%{?dist}
 Summary:	A language for writing Python extension modules
 
 %define upstreamversion %{version}
@@ -40,7 +40,7 @@ For more info, see:
     Demos	   for usage examples
 
 %prep
-%setup -q -n %{name}-%{upstreamversion}
+%setup -q -n %{pkg_name}-%{upstreamversion}
 
 find -name '*.py' | xargs sed -i '1s|^#!python|#!%{__python3}|'
 
@@ -72,7 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Sat Aug 16 2014 Dmitrijs Milajevs <dimazest@gmail.com> - 0.20.2-1
-- Cleanup and adoptations for Software collections.
+- Cleanup and adaptations for Software collections.
 - Update to 0.20.2
 
 * Fri Aug 15 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20.1-5
